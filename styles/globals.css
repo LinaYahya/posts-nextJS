@@ -2,15 +2,64 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  --bg: white;
+  --textNormal: rgba(34, 34, 34, 0.753);
+  --textTitle: rgb(95, 176, 184);
+  --textLink: #83c5be;
+  --heading: #63615d;
+  --bgfooter: rgba(184, 219, 216, 0.26);
+  --hr: hsla(0, 0%, 0%, 0.2);
+  --hover: rgba(222, 235, 233, 0.26);
+  background-color: var(--bg);
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+body.dark {
+  -webkit-font-smoothing: antialiased;
+  --bg: #1a202c;
+  --textNormal: #e2e5e9;
+  --textTitle: #d3003a;
+  --textLink: #ff0051;
+  --heading: rgb(150, 145, 143);
+  --bgfooter: rgba(211, 0, 56, 0.432);
+  --hr: hsla(0, 0%, 100%, 0.2);
+  --hover: #2c323db7;
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: var(--heading);
+}
+a,
+h3 {
+  color: var(--textTitle);
+  font-weight: bold;
+}
+p {
+  color: var(--textNormal);
+}
+i:hover {
+  color: var(--textLink);
+}
+.fab,
+.fas {
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 0.8rem;
+  }
 }
