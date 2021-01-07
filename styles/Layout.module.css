@@ -1,0 +1,35 @@
+.nav_container {
+  padding: 2% 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  height: 7%;
+  width: 100%;
+}
+
+.nav_left {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  padding: 0 1em;
+  color: var(--textNormal);
+  display: inline;
+  font-weight: bolder;
+}
+
+.heading_info {
+  display: flex;
+  flex-direction: row;
+  margin-top: 9%;
+  width: 100%;
+  padding: 20px;
+}
+
+.heading_info_left {
+  width: 50%;
+  margin: 8% 10%;
+}
