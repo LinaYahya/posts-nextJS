@@ -9,8 +9,10 @@ export default function Home({ posts }) {
   const [endLimit, setEndLimit] = useState(10);
   const [more, setMore] = useState(true);
 
+  // set the value of endLimit when it updated using ref to use it outside return 
   const stateRef = useRef();
   stateRef.current = endLimit;
+
 
   const loadMoreHandler = () => {
     if (
@@ -26,11 +28,12 @@ export default function Home({ posts }) {
     }
   };
 
+  // to render more ten posts while user scroll down
   useEffect(() => {
     if (more) {
       window.addEventListener("scroll", loadMoreHandler);
-      return () => window.removeEventListener("scroll", loadMoreHandler);
     }
+    return () => window.removeEventListener("scroll", loadMoreHandler);
   }, []);
 
   return (
@@ -39,7 +42,6 @@ export default function Home({ posts }) {
         <title>Posts App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {console.log({ more, endLimit })}
       <main className={styles.main}>
         <div className={styles.grid}>
           {posts.slice(0, endLimit).map((post) => (
@@ -52,6 +54,7 @@ export default function Home({ posts }) {
   );
 }
 
+// get posts value by dispatching fetchPosts and use getServerSideProps to SSRendering the page 
 export async function getServerSideProps() {
   await store.dispatch(fetchPosts());
   const { posts } = await store.getState();
