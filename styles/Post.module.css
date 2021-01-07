@@ -1,0 +1,39 @@
+.post_container {
+  width: 60%;
+  margin: 10% auto;
+  padding: 10px;
+}
+
+.post_details {
+  width: 90%;
+  margin: 2% auto;
+  padding: 10px;
+}
+.post_details h3{
+  margin: 0px 0;
+}
+.comments_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.comment {
+  padding: 5px;
+  width: 80%;
+  border-bottom: 0.5px solid rgba(179, 184, 184, 0.795);
+}
+
+.comment:hover {
+  transform: scale(1.05);
+  background-color: var(--hover);
+}
+.comment a {
+  color: var(--heading);
+}
+.comment a:hover {
+  color: var(--textLink);
+}
+.comment h4 {
+  margin: 7px 0;
+}
