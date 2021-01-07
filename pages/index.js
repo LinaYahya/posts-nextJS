@@ -42,6 +42,7 @@ export default function Home({ posts }) {
         <title>Posts App</title>
       </Head>
       <main className={styles.main}>
+        <h2>Check latest posts</h2>
         <div className={styles.grid}>
           {posts.slice(0, endLimit).map((post) => (
             <Post post={post} key={post.id} />

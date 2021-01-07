@@ -15,8 +15,8 @@ a {
 body {
   --bg: white;
   --textNormal: rgba(34, 34, 34, 0.753);
-  --textTitle: rgb(95, 176, 184);
-  --textLink: #83c5be;
+  --textTitle: rgb(78, 144, 175);
+  --textLink: #9ac2da;
   --heading: #63615d;
   --bgfooter: rgba(184, 219, 216, 0.26);
   --hr: hsla(0, 0%, 0%, 0.2);
