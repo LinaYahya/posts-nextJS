@@ -40,7 +40,6 @@ export default function Home({ posts }) {
     <div className={styles.container}>
       <Head>
         <title>Posts Static Page</title>
-        <link rel="icon" href="/blog.png" />
       </Head>
       <main className={styles.main}>
         <div className={styles.grid}>

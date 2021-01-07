@@ -53,10 +53,6 @@ p {
 i:hover {
   color: var(--textLink);
 }
-.fab,
-.fas {
-  font-size: 1.5rem;
-}
 
 @media only screen and (max-width: 768px) {
   body {
