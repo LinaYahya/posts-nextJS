@@ -42,17 +42,17 @@ export default function Home({ posts }) {
         <title>Posts Static Page</title>
       </Head>
       <main className={styles.main}>
-        <div className={styles.grid}>
-          {(posts.length) ? (
-            <>
-              <h2>Check latest posts</h2>
+        {(posts.length) ? (
+          <>
+            <h2>Check latest posts</h2>
+            <div className={styles.grid}>
               {posts.slice(0, endLimit).map((post) => (
                 <Post post={post} key={post.id} />
               ))}
-            </>
-          ) :
-            (<h4>Something went wrong while fetching data!! <br />try later </h4>)}
-        </div>
+            </div>
+          </>
+        ) :
+          (<h4>Something went wrong while fetching data!! <br />try later </h4>)}
         {!more && (<h3>no more data to load</h3>)}
       </main>
     </div>
