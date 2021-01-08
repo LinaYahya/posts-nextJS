@@ -18,10 +18,10 @@ const postsReducer = (state = initialPostsState, action) => {
         loading: false,
       };
     case 'GET_POST_COMMENT':
-      const post = state.posts.find(({id}) => id === Number(action.payload));
+      
       return {
         ...state,
-        post: {...post, comments: action.comments}
+        post: action.payload,
       }
     default:
       return state
