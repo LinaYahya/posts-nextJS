@@ -1,25 +1,24 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import Post from '../components/Post';
 import { fetchPosts } from '../store/actions';
 import store from '../store/store';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 
-export default function Home({ posts }) {
+export default function HomeStatic({ posts }) {
   const [endLimit, setEndLimit] = useState(10);
   const [more, setMore] = useState(true);
 
-  // set the value of endLimit when it updated using ref to use it outside return 
+  // set the value of endLimit when it updated using ref to use it outside return
   const stateRef = useRef();
   stateRef.current = endLimit;
 
-
   const loadMoreHandler = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    )
-      return;
+      window.innerHeight + document.documentElement.scrollTop
+      !== document.documentElement.offsetHeight
+    ) return;
 
     if (stateRef.current === 100) {
       setMore(false);
@@ -31,9 +30,9 @@ export default function Home({ posts }) {
   // to render more ten posts while user scroll down
   useEffect(() => {
     if (more) {
-      window.addEventListener("scroll", loadMoreHandler);
+      window.addEventListener('scroll', loadMoreHandler);
     }
-    return () => window.removeEventListener("scroll", loadMoreHandler);
+    return () => window.removeEventListener('scroll', loadMoreHandler);
   }, []);
 
   return (
@@ -51,17 +50,28 @@ export default function Home({ posts }) {
               ))}
             </div>
           </>
-        ) :
-          (<h4>Something went wrong while fetching data!! <br />try later </h4>)}
+        )
+          : (
+            <h4>
+              Something went wrong while fetching data!!
+              <br />
+              try later
+              {' '}
+            </h4>
+          )}
         {!more && (<h3>no more data to load</h3>)}
       </main>
     </div>
-  )
+  );
 }
 
 export async function getStaticProps() {
   await store.dispatch(fetchPosts());
   const { posts } = await store.getState();
 
-  return { props: { posts: posts.posts } }
+  return { props: { posts: posts.posts } };
 }
+
+HomeStatic.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
