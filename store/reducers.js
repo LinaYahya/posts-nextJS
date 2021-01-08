@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const initialPostsState = {
   posts: [],
   post: null,
-}
+};
 
 // create postsReducer function with action type FETCH_POSTS
 const postsReducer = (state = initialPostsState, action) => {
@@ -16,16 +16,16 @@ const postsReducer = (state = initialPostsState, action) => {
         loading: false,
       };
     case 'GET_POST_COMMENT':
-      
+
       return {
         ...state,
         post: action.payload,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 // combine reducer to return single reducer function
 export default combineReducers({
   posts: postsReducer,
-})
+});

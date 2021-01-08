@@ -20,6 +20,12 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
+        "jsx-a11y/anchor-is-valid": [ 0, {
+            "components": [ "Link" ],
+            "specialLink": [ "hrefLeft", "hrefRight" ],
+            "aspects": [ "noHref", "invalidHref", "preferButton" ]
+          }],
+    
         "react/jsx-filename-extension": [
             1,
             {
