@@ -1,17 +1,30 @@
-import React from "react";
 import Link from 'next/link';
-import styles from '../styles/Home.module.css'
+import PropTypes from 'prop-types';
+import styles from '../styles/Home.module.css';
 
 export default function Post({ post }) {
+  const { id, title, body } = post;
+
   return (
     <article className={styles.card}>
-      <Link href={`/${post.id}`}>
-        <a>{post.title}</a>
+      <Link href={`/${id}`}>
+        <a>{title}</a>
       </Link>
-      <p>{post.body.slice(0, 50)}...</p>
-      <Link href={`/${post.id}`} style={{display: 'inline'}}>
+      <p>
+        {body.slice(0, 50)}
+        ...
+      </p>
+      <Link href={`/${id}`} style={{ display: 'inline' }}>
         <a>read more</a>
       </Link>
     </article>
   );
 }
+
+Post.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }).isRequired,
+};

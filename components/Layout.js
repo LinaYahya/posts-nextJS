@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 
 export default function Layout({ children }) {
@@ -11,5 +12,9 @@ export default function Layout({ children }) {
       <Navbar />
       {children}
     </>
-  )
+  );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
