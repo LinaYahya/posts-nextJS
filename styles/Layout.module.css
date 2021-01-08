@@ -24,9 +24,8 @@
 .heading_info {
   display: flex;
   flex-direction: row;
-  margin-top: 9%;
   width: 100%;
-  padding: 20px;
+  padding: 30px;
 }
 
 .heading_info_left {

@@ -2,8 +2,6 @@ import { combineReducers } from 'redux';
 
 const initialPostsState = {
   posts: [],
-  error: null,
-  loading: false,
   post: null,
 }
 

@@ -39,7 +39,8 @@ body.dark {
 }
 
 h1,
-h2 {
+h2,
+h4 {
   color: var(--heading);
 }
 a,

@@ -42,11 +42,16 @@ export default function Home({ posts }) {
         <title>Posts App</title>
       </Head>
       <main className={styles.main}>
-        <h2>Check latest posts</h2>
         <div className={styles.grid}>
-          {posts.slice(0, endLimit).map((post) => (
-            <Post post={post} key={post.id} />
-          ))}
+          {(posts.length) ? (
+            <>
+              <h2>Check latest posts</h2>
+              {posts.slice(0, endLimit).map((post) => (
+                <Post post={post} key={post.id} />
+              ))}
+            </>
+          ) :
+            (<h4>Something went wrong while fetching data!! <br />try later </h4>)}
         </div>
         {!more && (<h3>no more data to load</h3>)}
       </main>
