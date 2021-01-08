@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image'
-
 import styles from '../styles/Layout.module.css';
 
 export default function Navbar() {
@@ -26,7 +25,7 @@ export default function Navbar() {
           <h1>Discover people thoughts around You</h1>
         </div>
         <div className={styles.heading_info_right}>
-          <Image src='/../public/thought.png' alt='people thoughts'
+          <Image src='/thought.png' alt='people thoughts'
             width={300}
             height={300}
           />
