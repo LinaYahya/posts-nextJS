@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { getPostComment } from '../../store/actions';
 import Comment from '../../components/Comment';
-import store from '../../store/store';
+import { store } from '../../store/store';
 import styles from '../../styles/Post.module.css';
 
 const PostPage = ({ post }) => {
-  const { title, body, comments } = JSON.parse(JSON.stringify(post));
+  const { title, body, comments } = post;
   return (
     <div className={styles.post_container}>
       <div className={styles.post_details}>
