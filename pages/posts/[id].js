@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import { getPostComment } from '../../store/actions';
 import Comment from '../../components/Comment';
 import { store } from '../../store/store';
@@ -7,18 +8,23 @@ import styles from '../../styles/Post.module.css';
 const PostPage = ({ post }) => {
   const { title, body, comments } = post;
   return (
-    <div className={styles.post_container}>
-      <div className={styles.post_details}>
-        <h3>{title}</h3>
-        <p style={{ fontWeight: 'bold' }}>{body}</p>
-        <ul className={styles.comments_list}>
-          <h3>Check post comments</h3>
-          {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
-        </ul>
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <div className={styles.post_container}>
+        <div className={styles.post_details}>
+          <h3>{title}</h3>
+          <p style={{ fontWeight: 'bold' }}>{body}</p>
+          <ul className={styles.comments_list}>
+            <h3>Check post comments</h3>
+            {comments.map((comment) => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

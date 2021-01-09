@@ -7,14 +7,14 @@ export default function Post({ post }) {
 
   return (
     <article className={styles.card}>
-      <Link href={`/${id}`}>
+      <Link href={`/posts/${id}`}>
         <a>{title}</a>
       </Link>
       <p>
         {body.slice(0, 50)}
         ...
       </p>
-      <Link href={`/${id}`} style={{ display: 'inline' }}>
+      <Link href={`/posts/${id}`} style={{ display: 'inline' }}>
         <a>read more</a>
       </Link>
     </article>
