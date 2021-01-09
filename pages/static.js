@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import Head from 'next/head';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Post from '../components/Post';
+import Head from 'next/head';
+import { wrapper } from '../store/store';
 import { fetchPosts } from '../store/actions';
-import store from '../store/store';
+import Post from '../components/Post';
 import styles from '../styles/Home.module.css';
 
-export default function HomeStatic({ posts }) {
+function HomeStatic({ posts }) {
   const [endLimit, setEndLimit] = useState(10);
   const [more, setMore] = useState(true);
 
@@ -64,14 +65,14 @@ export default function HomeStatic({ posts }) {
     </div>
   );
 }
-
-export async function getStaticProps() {
-  await store.dispatch(fetchPosts());
-  const { posts } = await store.getState();
-
-  return { props: { posts: posts.posts } };
-}
+export const getStaticProps = wrapper.getStaticProps(
+  async ({ store }) => {
+    await store.dispatch(fetchPosts());
+  },
+);
 
 HomeStatic.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
+export default connect((state) => state.posts.posts)(HomeStatic);

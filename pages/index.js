@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import Post from '../components/Post';
+import { wrapper } from '../store/store';
 import { fetchPosts } from '../store/actions';
-import store from '../store/store';
+import Post from '../components/Post';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ posts }) {
+function Home({ posts }) {
   const [endLimit, setEndLimit] = useState(10);
   const [more, setMore] = useState(true);
 
@@ -65,14 +66,13 @@ export default function Home({ posts }) {
   );
 }
 
-// get posts value by dispatching fetchPosts and use getServerSideProps to SSRendering the page
-export async function getServerSideProps() {
-  await store.dispatch(fetchPosts());
-  const { posts } = await store.getState();
-
-  return { props: { posts: posts.posts } };
-}
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    await store.dispatch(fetchPosts());
+  },
+);
 
 Home.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+export default connect((state) => state.posts.posts)(Home);
