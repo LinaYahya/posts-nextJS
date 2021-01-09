@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { HYDRATE } from 'next-redux-wrapper';
 
 const initialPostsState = {
   posts: [],
@@ -8,6 +9,8 @@ const initialPostsState = {
 // create postsReducer function with action type FETCH_POSTS
 const postsReducer = (state = initialPostsState, action) => {
   switch (action.type) {
+    case HYDRATE:
+      return { ...state, ...action.payload };
     case 'FETCH_POSTS':
       return {
         ...state,

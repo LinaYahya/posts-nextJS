@@ -1,11 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import Router from 'next/router';
-import { Provider } from 'react-redux';
-import { createWrapper } from 'next-redux-wrapper';
 import NProgress from 'nprogress'; // nprogress module
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
-import store from '../store/store';
+import { wrapper } from '../store/store';
 import 'nprogress/nprogress.css'; // styles of nprogress
 import '../styles/globals.css';
 
@@ -16,16 +14,11 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
-
-const makeStore = () => store;
-const wrapper = createWrapper(makeStore);
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
